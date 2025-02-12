@@ -8,6 +8,7 @@ import java.util.List;
 class BookStore
 {
     private static final int PERCENTAGE_FACTOR = 100;
+    private static final int CURRENT_YEAR = 2025;
 
     private final String name;
     private final List<Novel> bookList;
@@ -320,6 +321,50 @@ class BookStore
         return newBookList;
     }
 
+    public Novel getOldestBook()
+    {
+        Novel oldestBook;
+
+        oldestBook = bookList.getFirst();
+
+        for(Novel novel : bookList)
+        {
+            if(novel.getYearPublished() < oldestBook.getYearPublished())
+            {
+                oldestBook = novel;
+            }
+        }
+        return oldestBook;
+    }
+
+    public void printGroupByDecade(final int year)
+    {
+        for(Novel novel : bookList)
+        {
+            if(novel.getYearPublished() - year <= 9 &&
+            novel.getYearPublished() - year >= 0)
+            {
+                System.out.println(novel.getTitle());
+            }
+        }
+    }
+
+    public void getLongest()
+    {
+        Novel longestBook;
+
+        longestBook = bookList.getFirst();
+
+        for(Novel novel : bookList)
+        {
+            if(novel.getTitle().length() > longestBook.getTitle().length())
+            {
+                longestBook = novel;
+            }
+        }
+        System.out.println(longestBook.getTitle());
+    }
+
     public static void main(final String[] args)
     {
         final BookStore bookstore;
@@ -332,20 +377,20 @@ class BookStore
         bookstore.printBookTitle("the");
         System.out.println("\nAll Titles in Alphabetical Order:");
         bookstore.printTitlesInAlphaOrder();
-//        System.out.println("\nBooks from the 2000s:");
-//        bookstore.printGroupByDecade(2000);
-//        System.out.println("\nLongest Book Title:");
-//        bookstore.getLongest();
+        System.out.println("\nBooks from the 2000s:");
+        bookstore.printGroupByDecade(2000);
+        System.out.println("\nLongest Book Title:");
+        bookstore.getLongest();
         System.out.println("\nIs there a book written in 1950?");
         System.out.println(bookstore.isThereABookWrittenIn(1950));
         System.out.println("\nHow many books contain 'heart'?");
         System.out.println(bookstore.howManyBooksContain("heart"));
         System.out.println("\nPercentage of books written between 1940 and 1950:");
         System.out.println(bookstore.whichPercentWrittenBetween(1940, 1950) + "%");
-//        System.out.println("\nOldest book:");
-//        oldest = bookstore.getOldestBook();
-//        System.out.println(oldest.getTitle() + " by " + oldest.getAuthorName() + ", " +
-//                oldest.getYearPublished());
+        System.out.println("\nOldest book:");
+        oldest = bookstore.getOldestBook();
+        System.out.println(oldest.getTitle() + " by " + oldest.getAuthorName() + ", " +
+                oldest.getYearPublished());
         System.out.println("\nBooks with titles 15 characters long:");
         fifteenCharTitles = bookstore.getBooksThisLength(15);
         fifteenCharTitles.forEach(novel -> System.out.println(novel.getTitle()));
