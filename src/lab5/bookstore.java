@@ -5,6 +5,16 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+
+/**
+ * The {@code BookStore} class represents a bookstore that maintains a collection of novels.
+ * It provides various methods to retrieve and analyze books based on different criteria.
+ *
+ * @author Shwan Lee
+ * @author Lucas Liu
+ *
+ * @version 1.0
+ */
 class BookStore
 {
     private static final int PERCENTAGE_FACTOR = 100;
@@ -13,6 +23,10 @@ class BookStore
     private final String name;
     private final List<Novel> bookList;
 
+    /**
+     * Constructs a new {@code BookStore} with the specified name.
+     * @param name The name of the bookstore.
+     */
     BookStore(final String name)
     {
         this.name = name;
@@ -138,6 +152,11 @@ class BookStore
         bookList.add(new Novel("Wide Sargasso Sea", "Jean Rhys", 1966));
     }
 
+
+    /**
+     * Retrieves the list of books in the bookstore.
+     * @return A list of novels in the bookstore.
+     */
     public List<Novel> getBookList()
     {
         return bookList;
@@ -321,6 +340,10 @@ class BookStore
         return newBookList;
     }
 
+    /**
+     * Retrieves the oldest book in the bookstore.
+     * @return The oldest book.
+     */
     public Novel getOldestBook()
     {
         Novel oldestBook;
@@ -337,6 +360,10 @@ class BookStore
         return oldestBook;
     }
 
+    /**
+     * Prints all books that were published in a specific decade.
+     * @param year The starting year of the decade.
+     */
     public void printGroupByDecade(final int year)
     {
         for(Novel novel : bookList)
@@ -349,6 +376,9 @@ class BookStore
         }
     }
 
+    /**
+     * Prints the book with the longest title.
+     */
     public void getLongest()
     {
         Novel longestBook;
@@ -365,6 +395,10 @@ class BookStore
         System.out.println(longestBook.getTitle());
     }
 
+    /**
+     * The main method that demonstrates the functionality of the bookstore.
+     * @param args Command-line arguments.
+     */
     public static void main(final String[] args)
     {
         final BookStore bookstore;

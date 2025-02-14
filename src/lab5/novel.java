@@ -5,7 +5,7 @@ package lab5;
  * This class provides methods to retrieve novel details.
  *
  * @author Shawn Lee
- * @author Lucas
+ * @author Lucas Liu
  *
  * @version 1.0
  */
@@ -79,7 +79,7 @@ class Novel implements Comparable<Novel>
     @Override
     public int compareTo(final Novel other)
     {
-        return this.title().compareTo(other.title());
+        return this.title.compareTo(other.title);
     }
 
     /**
@@ -138,7 +138,7 @@ class Novel implements Comparable<Novel>
         if(isInvalid)
         {
             throw new IllegalArgumentException("Invalid author name\n" +
-                                               "Author name shouldn't be null or empty");)
+                                               "Author name shouldn't be null or empty");
         }
     }
 

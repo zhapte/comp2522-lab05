@@ -2,10 +2,26 @@ package lab5;
 
 import java.util.*;
 
+/**
+ * The {@code BookShop} class represents a bookstore that maintains a collection of novels in a map.
+ * It provides functionalities for storing, filtering, and sorting novels based on their titles.
+ *
+ * @author Shawn Lee
+ * @author Lucas Liu
+ *
+ * @version 1.0
+ */
 class BookShop
 {
     private final Map<String, Novel> novelMap;
 
+    /**
+     * Constructs a new {@code BookShop} with the given list of novels.
+     * Initializes a map storing the novels with their titles as keys.
+     * Removes titles containing "the" (case insensitive) and sorts the remaining ones.
+     *
+     * @param novelList A list of novels to be stored in the bookshop.
+     */
     BookShop(final List<Novel> novelList)
     {
         novelMap = new HashMap<>();
@@ -73,6 +89,12 @@ class BookShop
         }
     }
 
+    /**
+     * The main method that demonstrates the functionality of the {@code BookShop} class.
+     * It initializes a {@code BookStore}, retrieves its book list, and passes it to the {@code BookShop}.
+     *
+     * @param args Command-line arguments.
+     */
     public static void main(final String[] args)
     {
         BookStore bookstore = new BookStore("Classic Novels Collection");
