@@ -11,6 +11,9 @@ package lab5;
  */
 class Novel implements Comparable<Novel>
 {
+    private static final int MINIMUM_YEAR = 0;
+    private static final int CURRENT_YEAR = 2025;
+
     private final String title;
     private final String authorName;
     private final int yearPublished;
@@ -27,6 +30,10 @@ class Novel implements Comparable<Novel>
           final String authorName,
           final int yearPublished)
     {
+        validateTitle(title);
+        validateAuthorName(authorName);
+        validateYearPublished(yearPublished);
+
         this.title = title;
         this.authorName = authorName;
         this.yearPublished = yearPublished;
@@ -72,7 +79,7 @@ class Novel implements Comparable<Novel>
     @Override
     public int compareTo(final Novel other)
     {
-        return this.getTitle().compareTo(other.getTitle());
+        return this.title().compareTo(other.title());
     }
 
     /**
@@ -99,5 +106,56 @@ class Novel implements Comparable<Novel>
         str = builder.toString();
 
         return str;
+    }
+
+    /*
+     * A validation method for title which ckecks whether the given
+     * title is null or epmpty. If so, it throws an IllegalArgumentException.
+     */
+    private void validateTitle(final String title)
+    {
+        final boolean isInvalid;
+
+        isInvalid = title == null || title.isEmpty();
+
+        if(isInvalid)
+        {
+            throw new IllegalArgumentException("Invalid title\n" +
+                                               "Title shouldn't be null or empty");
+        }
+    }
+
+    /*
+     * A validation method for author name which ckecks whether the given
+     * author name is null or epmpty. If so, it throws an IllegalArgumentException.
+     */
+    private void validateAuthorName(final String name)
+    {
+        final boolean isInvalid;
+
+        isInvalid = name == null || name.isEmpty();
+
+        if(isInvalid)
+        {
+            throw new IllegalArgumentException("Invalid author name\n" +
+                                               "Author name shouldn't be null or empty");)
+        }
+    }
+
+    /*
+     * A validation method for published year which ckecks whether the given
+     * published year is between 0 and 2025. If not, it throws an IllegalArgumentException.
+     */
+    private void validateYearPublished(final int yearPublished)
+    {
+        final boolean isInvalid;
+
+        isInvalid = MINIMUM_YEAR < yearPublished || yearPublished > CURRENT_YEAR;
+
+        if(isInvalid)
+        {
+            throw new IllegalArgumentException("Year published must be between " +
+                                               MINIMUM_YEAR + " and " + CURRENT_YEAR);
+        }
     }
 }
