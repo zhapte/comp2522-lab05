@@ -158,7 +158,7 @@ class BookStore
                 }
             }
         }
-        // Not sure if I need to add another println when bookList is Null.
+        System.out.println("Book List is empty.");
     }
 
     /**
