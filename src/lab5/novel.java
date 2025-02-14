@@ -150,7 +150,7 @@ class Novel implements Comparable<Novel>
     {
         final boolean isInvalid;
 
-        isInvalid = MINIMUM_YEAR < yearPublished || yearPublished > CURRENT_YEAR;
+        isInvalid = MINIMUM_YEAR > yearPublished || yearPublished > CURRENT_YEAR;
 
         if(isInvalid)
         {
